@@ -1,0 +1,68 @@
+<html>
+  <head>
+		<title>click me to copy</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+			<label for="git">Git:</label>
+			<input type="text" id="git" value="https://github.com/ditanand" readonly />
+			<button data-copytarget="#git">copy</button>
+
+			<label for="my-portfolio">My Portfolio:</label>
+			<input type="text" id="my-portfolio" value="http://anandkr.cf/" readonly />
+			<button data-copytarget="#my-portfolio">copy</button>
+
+	    <label for="website">linkedin:</label>
+			<input type="text" class= "input"  id="website" value="https://www.linkedin.com/in/anand-kumar-377930b7/" readonly />
+	    <a href="javascript:;" title="copy" class="linkedin" data-copytarget="#website"></a>
+	</body>
+</html>
+
+
+<script type="text/javascript">
+/*
+    Copy text from any appropriate field to the clipboard
+  By Craig Buckler, @craigbuckler
+  use it, abuse it, do whatever you like with it!
+*/
+(function() {
+
+    'use strict';
+  
+  // click events
+  document.body.addEventListener('click', copy, true);
+
+    // event handler
+    function copy(e) {
+
+    // find target element
+    var 
+      t = e.target,
+      c = t.dataset.copytarget,
+      inp = (c ? document.querySelector(c) : null);
+      
+    // is element selectable?
+    if (inp && inp.select) {
+      
+      // select text
+      inp.select();
+
+      try {
+        // copy text
+        document.execCommand('copy');
+        inp.blur();
+        
+        // copied animation
+        t.classList.add('copied');
+        setTimeout(function() { t.classList.remove('copied'); }, 1500);
+      }
+      catch (err) {
+        alert('please press Ctrl/Cmd+C to copy');
+      }
+      
+    }
+    
+    }
+
+})();
+</script>
